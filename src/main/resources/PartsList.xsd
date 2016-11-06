@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PartsList" type="PartsListType"/>
+  <xs:complexType name="RamType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="power"/>
+      <xs:element type="xs:string" name="Clock"/>
+      <xs:element type="xs:string" name="capacity"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartsListType">
+    <xs:sequence>
+      <xs:element type="CpuType" name="Cpu"/>
+      <xs:element type="RamType" name="Ram"/>
+      <xs:element type="VideoCardType" name="VideoCard"/>
+      <xs:element type="HddType" name="Hdd"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CpuType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="power"/>
+      <xs:element type="xs:string" name="clock"/>
+      <xs:element type="xs:string" name="bits"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VideoCardType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="power"/>
+      <xs:element type="xs:string" name="producer"/>
+      <xs:element type="xs:string" name="ramSize"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HddType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="power"/>
+      <xs:element type="xs:string" name="spindleSpeed"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

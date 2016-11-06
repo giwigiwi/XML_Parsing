@@ -1,0 +1,19 @@
+<Computer>
+    <PartsList>
+        <Part>
+            <Name>Cpu</Name>
+        </Part>
+        <Part>
+            <Name>Hdd</Name>
+        </Part>
+        <Part>
+            <Name>Ram</Name>
+        </Part>
+        <Part>
+            <Name>VideoCard</Name>
+        </Part>
+    </PartsList>
+    <PowerSupply>
+        <Value>800</Value>
+    </PowerSupply>
+</Computer>

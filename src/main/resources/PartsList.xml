@@ -1,0 +1,21 @@
+<PartsList>
+    <Cpu>
+        <power></power>
+        <clock></clock>
+        <bits></bits>
+    </Cpu>
+    <Ram>
+        <power></power>
+        <Clock></Clock>
+        <capacity></capacity>
+    </Ram>
+    <VideoCard>
+        <power></power>
+        <producer></producer>
+        <ramSize></ramSize>
+    </VideoCard>
+    <Hdd>
+        <power></power>
+        <spindleSpeed></spindleSpeed>
+    </Hdd>
+</PartsList>

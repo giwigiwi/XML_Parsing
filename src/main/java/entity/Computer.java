@@ -29,4 +29,5 @@ public class Computer {
     public void setPowerSupply(int powerSupply) {
         this.powerSupply = powerSupply;
     }
-}
+
+    }

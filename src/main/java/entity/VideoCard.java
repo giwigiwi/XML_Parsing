@@ -18,6 +18,15 @@ public class VideoCard implements Part{
         return power;
     }
 
+    @Override
+    public String toString() {
+        return "VideoCard{" +
+                "power=" + power +
+                ", producer='" + producer + '\'' +
+                ", ramSize='" + ramSize + '\'' +
+                '}';
+    }
+
     public void setPower(int power) {
         this.power = power;
     }

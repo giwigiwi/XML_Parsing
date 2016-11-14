@@ -27,4 +27,12 @@ public class Hdd implements Part {
     public void setSpindleSpeed(String spindleSpeed) {
         this.spindleSpeed = spindleSpeed;
     }
+
+    @Override
+    public String toString() {
+        return "Hdd{" +
+                "power=" + power +
+                ", spindleSpeed='" + spindleSpeed + '\'' +
+                '}';
+    }
 }

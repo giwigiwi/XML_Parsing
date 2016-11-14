@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="Computer" type="ComputerType"/>
+<xs:complexType name="PartType">
+<xs:sequence>
+    <xs:element name="name">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Cpu"/>
+                <xs:enumeration value="Ram"/>
+                <xs:enumeration value="VideoCard"/>
+                <xs:enumeration value="Hdd"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="power">
+        <xs:simpleType>
+            <xs:restriction base="xs:int">
+                <xs:enumeration value="350"/>
+                <xs:enumeration value="300"/>
+                <xs:enumeration value="250"/>
+                <xs:enumeration value="150"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element type="xs:string" name="clock" minOccurs="0"/>
+    <xs:element type="xs:string" name="bits" minOccurs="0"/>
+    <xs:element type="xs:string" name="Clock" minOccurs="0"/>
+    <xs:element type="xs:string" name="capacity" minOccurs="0"/>
+    <xs:element type="xs:string" name="producer" minOccurs="0"/>
+    <xs:element type="xs:string" name="ramSize" minOccurs="0"/>
+    <xs:element type="xs:string" name="spindleSpeed" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ComputerType">
+<xs:sequence>
+    <xs:element type="PartsListType" name="PartsList"/>
+    <xs:element type="xs:int" name="PowerSupply"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="PartsListType">
+<xs:sequence>
+    <xs:element type="PartType" name="Part" maxOccurs="unbounded" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

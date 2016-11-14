@@ -37,4 +37,13 @@ public class Cpu implements Part {
     public void setBits(String bits) {
         this.bits = bits;
     }
+
+    @Override
+    public String toString() {
+        return "Cpu{" +
+                "power=" + power +
+                ", clock='" + clock + '\'' +
+                ", bits='" + bits + '\'' +
+                '}';
+    }
 }

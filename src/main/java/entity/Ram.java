@@ -37,4 +37,13 @@ public class Ram implements Part{
     public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public String toString() {
+        return "Ram{" +
+                "power=" + power +
+                ", clock='" + clock + '\'' +
+                ", capacity='" + capacity + '\'' +
+                '}';
+    }
 }

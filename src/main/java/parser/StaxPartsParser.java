@@ -22,12 +22,12 @@ public class StaxPartsParser {
     private static Cpu cpu = new Cpu();
     private static Ram ram = new Ram();
     private static Hdd hdd = new Hdd();
-    private static VideoCard vcard = new VideoCard();
+    private static VideoCard vCard = new VideoCard();
     private static String currentE = "";
     private static boolean isCpu = false;
     private static boolean isRam = false;
     private static boolean isHdd = false;
-    private static boolean isVcard = false;
+    private static boolean isVCard = false;
     private static boolean isPower;
     private static boolean isClock;
     private static boolean isBits;
@@ -35,6 +35,7 @@ public class StaxPartsParser {
     private static boolean isRamSize;
     private static boolean isSpSpeed;
     private static boolean isPowerSupply;
+    private static boolean isCapacity;
 
     public static Computer parse() {
         log.debug("Start StAX-parsing...");
@@ -68,6 +69,8 @@ public class StaxPartsParser {
                             isSpSpeed = true;
                         }else if (currentE.equalsIgnoreCase("powersupply")) {
                             isPowerSupply = true;
+                        }else if (currentE.equalsIgnoreCase("capacity")) {
+                            isCapacity = true;
                         }
                         break;
                     case XMLStreamConstants.CHARACTERS:
@@ -76,7 +79,7 @@ public class StaxPartsParser {
                             if(characters.getData().equalsIgnoreCase("cpu")) isCpu=true;
                             else if(characters.getData().equalsIgnoreCase("ram")) isRam=true;
                             else if(characters.getData().equalsIgnoreCase("hdd")) isHdd=true;
-                            else if(characters.getData().equalsIgnoreCase("videocard")) isVcard=true;
+                            else if(characters.getData().equalsIgnoreCase("videocard")) isVCard =true;
                             isName = false;
                         }
                         if (isPower) {
@@ -85,9 +88,9 @@ public class StaxPartsParser {
                             else if (isHdd) {
                                 hdd.setPower(new Integer(characters.getData()));
                                 isHdd = false;
-                            } else if (isVcard) {
-                                vcard.setPower(new Integer(characters.getData()));
-                                isVcard = false;
+                            } else if (isVCard) {
+                                vCard.setPower(new Integer(characters.getData()));
+                                isVCard = false;
                             }
                             isPower = false;
                         }
@@ -106,11 +109,14 @@ public class StaxPartsParser {
                             isBits=false;
                         }
                         if(isProducer){
-                            vcard.setProducer(characters.getData());
+                            vCard.setProducer(characters.getData());
                             isProducer=false;
                         }
+                        if(isCapacity){
+                            ram.setCapacity(characters.getData());
+                        }
                         if(isRamSize){
-                            vcard.setRamSize(characters.getData());
+                            vCard.setRamSize(characters.getData());
                             isRamSize=false;
                         }
                         if(isSpSpeed){
@@ -129,7 +135,7 @@ public class StaxPartsParser {
                             comp1.getPartsList().add(cpu);
                             comp1.getPartsList().add(ram);
                             comp1.getPartsList().add(hdd);
-                            comp1.getPartsList().add(vcard);
+                            comp1.getPartsList().add(vCard);
                         }
                         break;
                 }

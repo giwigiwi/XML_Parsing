@@ -20,12 +20,12 @@ public class SaxPartsParser extends DefaultHandler {
     private Cpu cpu = new Cpu();
     private Ram ram = new Ram();
     private Hdd hdd = new Hdd();
-    private VideoCard vcard = new VideoCard();
+    private VideoCard vCard = new VideoCard();
     private String currentE = "";
     private boolean isCpu = false;
     private boolean isRam = false;
     private boolean isHdd = false;
-    private boolean isVcard = false;
+    private boolean isVCard = false;
 
     public SaxPartsParser() {
     }
@@ -54,7 +54,7 @@ public class SaxPartsParser extends DefaultHandler {
         comp1.getPartsList().add(cpu);
         comp1.getPartsList().add(ram);
         comp1.getPartsList().add(hdd);
-        comp1.getPartsList().add(vcard);
+        comp1.getPartsList().add(vCard);
         log.debug("Parts List collection in {} include {} parts",Computer.class.getName(),comp1.getPartsList().size());
         log.debug(comp1.getPartsList().toString());
         log.debug("Stop SAX parsing");
@@ -79,7 +79,7 @@ public class SaxPartsParser extends DefaultHandler {
                 if (new String(ch, start, length).equals("Cpu")) isCpu = true;
                 else if (new String(ch, start, length).equals("Ram")) isRam = true;
                 else if (new String(ch, start, length).equals("Hdd")) isHdd = true;
-                else if (new String(ch, start, length).equals("Cpu")) isVcard = true;
+                else if (new String(ch, start, length).equals("Cpu")) isVCard = true;
                 break;
             case "power":
                 if (isCpu) cpu.setPower(new Integer(new String(ch, start, length)));
@@ -87,9 +87,9 @@ public class SaxPartsParser extends DefaultHandler {
                 else if (isHdd) {
                     hdd.setPower(new Integer(new String(ch, start, length)));
                     isHdd = false;
-                } else if (isVcard) {
-                    vcard.setPower(new Integer(new String(ch, start, length)));
-                    isVcard = false;
+                } else if (isVCard) {
+                    vCard.setPower(new Integer(new String(ch, start, length)));
+                    isVCard = false;
                 }
                 break;
             case "bits":
@@ -104,10 +104,13 @@ public class SaxPartsParser extends DefaultHandler {
                 }
                 break;
             case "produser":
-                vcard.setProducer(new String(ch, start, length));
+                vCard.setProducer(new String(ch, start, length));
+                break;
+            case "capacity":
+                ram.setCapacity(new String(ch, start, length));
                 break;
             case "ramSize":
-                vcard.setRamSize(new String(ch, start, length));
+                vCard.setRamSize(new String(ch, start, length));
                 break;
             case "spindleSpeed":
                 hdd.setSpindleSpeed(new String(ch, start, length));

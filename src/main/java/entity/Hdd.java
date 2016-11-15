@@ -35,4 +35,23 @@ public class Hdd implements Part {
                 ", spindleSpeed='" + spindleSpeed + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hdd hdd = (Hdd) o;
+
+        if (power != hdd.power) return false;
+        return spindleSpeed != null ? spindleSpeed.equals(hdd.spindleSpeed) : hdd.spindleSpeed == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = power;
+        result = 31 * result + (spindleSpeed != null ? spindleSpeed.hashCode() : 0);
+        return result;
+    }
 }

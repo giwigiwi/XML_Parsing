@@ -46,4 +46,25 @@ public class Cpu implements Part {
                 ", bits='" + bits + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cpu cpu = (Cpu) o;
+
+        if (power != cpu.power) return false;
+        if (clock != null ? !clock.equals(cpu.clock) : cpu.clock != null) return false;
+        return bits != null ? bits.equals(cpu.bits) : cpu.bits == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = power;
+        result = 31 * result + (clock != null ? clock.hashCode() : 0);
+        result = 31 * result + (bits != null ? bits.hashCode() : 0);
+        return result;
+    }
 }

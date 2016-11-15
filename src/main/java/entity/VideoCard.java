@@ -46,4 +46,25 @@ public class VideoCard implements Part{
     public void setRamSize(String ramSize) {
         this.ramSize = ramSize;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        VideoCard videoCard = (VideoCard) o;
+
+        if (power != videoCard.power) return false;
+        if (producer != null ? !producer.equals(videoCard.producer) : videoCard.producer != null) return false;
+        return ramSize != null ? ramSize.equals(videoCard.ramSize) : videoCard.ramSize == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = power;
+        result = 31 * result + (producer != null ? producer.hashCode() : 0);
+        result = 31 * result + (ramSize != null ? ramSize.hashCode() : 0);
+        return result;
+    }
 }

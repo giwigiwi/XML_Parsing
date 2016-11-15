@@ -73,13 +73,13 @@ public class SaxPartsParser extends DefaultHandler {
     public void characters(char[] ch, int start, int length) throws SAXException {
         switch (currentE) {
             case "PartsList":
-                log.debug("parts list was found");
+               // log.debug("parts list was found");
                 break;
             case "name":
                 if (new String(ch, start, length).equals("Cpu")) isCpu = true;
                 else if (new String(ch, start, length).equals("Ram")) isRam = true;
                 else if (new String(ch, start, length).equals("Hdd")) isHdd = true;
-                else if (new String(ch, start, length).equals("Cpu")) isVCard = true;
+                else if (new String(ch, start, length).equals("VideoCard")) isVCard = true;
                 break;
             case "power":
                 if (isCpu) cpu.setPower(new Integer(new String(ch, start, length)));
@@ -103,7 +103,7 @@ public class SaxPartsParser extends DefaultHandler {
                     isRam = false;
                 }
                 break;
-            case "produser":
+            case "producer":
                 vCard.setProducer(new String(ch, start, length));
                 break;
             case "capacity":

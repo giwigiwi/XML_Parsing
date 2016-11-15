@@ -30,4 +30,22 @@ public class Computer {
         this.powerSupply = powerSupply;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Computer computer = (Computer) o;
+
+        if (powerSupply != computer.powerSupply) return false;
+        return partsList != null ? partsList.equals(computer.partsList) : computer.partsList == null;
+
     }
+
+    @Override
+    public int hashCode() {
+        int result = partsList != null ? partsList.hashCode() : 0;
+        result = 31 * result + powerSupply;
+        return result;
+    }
+}

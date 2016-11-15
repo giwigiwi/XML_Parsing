@@ -23,7 +23,6 @@ public class StaxPartsParser {
     private static Ram ram = new Ram();
     private static Hdd hdd = new Hdd();
     private static VideoCard vCard = new VideoCard();
-    private static String currentE = "";
     private static boolean isCpu = false;
     private static boolean isRam = false;
     private static boolean isHdd = false;
@@ -50,7 +49,7 @@ public class StaxPartsParser {
                 switch (event.getEventType()) {
                     case XMLStreamConstants.START_ELEMENT:
                         StartElement startElement = event.asStartElement();
-                        currentE = startElement.getName().getLocalPart();
+                        String currentE = startElement.getName().getLocalPart();
 
                         if (currentE.equalsIgnoreCase("part")) {
                         } else if (currentE.equalsIgnoreCase("name")) {
@@ -100,7 +99,6 @@ public class StaxPartsParser {
                                 isCpu = false;
                             } else if (isRam) {
                                 ram.setClock(characters.getData());
-                                isRam = false;
                             }
                             isClock = false;
                         }
@@ -114,6 +112,8 @@ public class StaxPartsParser {
                         }
                         if(isCapacity){
                             ram.setCapacity(characters.getData());
+                            isCapacity=false;
+                            isRam = false;
                         }
                         if(isRamSize){
                             vCard.setRamSize(characters.getData());

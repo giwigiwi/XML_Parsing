@@ -46,4 +46,27 @@ public class Ram implements Part{
                 ", capacity='" + capacity + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ram ram = (Ram) o;
+
+        if (power != ram.power) return false;
+        if (clock != null ? !clock.equals(ram.clock) : ram.clock != null) return false;
+        if (capacity != null ? !capacity.equals(ram.capacity) : ram.capacity != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = power;
+        result = 31 * result + (clock != null ? clock.hashCode() : 0);
+        result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
+        return result;
+    }
 }

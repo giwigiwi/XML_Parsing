@@ -16,7 +16,7 @@ public class Main {
         Computer comp1 = StaxPartsParser.parse();
         Computer comp2 = DomPartsParser.parse();
         if(comp.equals(comp1)|| comp1.equals(comp2)){
-          log.info("3 PC from Computer.xml created by 3 parsers are the same");
+          log.info("3 PC from Computer.xml created by 3 parsers, all of them are the same");
         }
     }
 }
